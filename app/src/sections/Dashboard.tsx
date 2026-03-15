@@ -42,9 +42,10 @@ import { useLanguageStore } from '../stores/languageStore';
 
 interface DashboardProps {
   preview?: boolean;
+  onSectionChange?: (section: string) => void;
 }
 
-export function Dashboard({ preview = false }: DashboardProps) {
+export function Dashboard({ preview = false, onSectionChange }: DashboardProps) {
   const { t } = useLanguageStore();
   const { isAuthenticated, user } = useAuthStore();
   const { crops, weather, alerts, fetchCrops, fetchWeather } = useFarmHealthStore();
@@ -392,19 +393,35 @@ export function Dashboard({ preview = false }: DashboardProps) {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-2">
-                  <Button variant="outline" className="h-auto py-3 flex flex-col items-center gap-1">
+                  <Button 
+                    variant="outline" 
+                    className="h-auto py-3 flex flex-col items-center gap-1"
+                    onClick={() => onSectionChange?.('farm-health')}
+                  >
                     <Sprout className="w-5 h-5" />
                     <span className="text-xs">{t('dashboard.checkCrops')}</span>
                   </Button>
-                  <Button variant="outline" className="h-auto py-3 flex flex-col items-center gap-1">
+                  <Button 
+                    variant="outline" 
+                    className="h-auto py-3 flex flex-col items-center gap-1"
+                    onClick={() => onSectionChange?.('market')}
+                  >
                     <ShoppingCart className="w-5 h-5" />
                     <span className="text-xs">{t('dashboard.newListing')}</span>
                   </Button>
-                  <Button variant="outline" className="h-auto py-3 flex flex-col items-center gap-1">
+                  <Button 
+                    variant="outline" 
+                    className="h-auto py-3 flex flex-col items-center gap-1"
+                    onClick={() => onSectionChange?.('tools-lending')}
+                  >
                     <Wrench className="w-5 h-5" />
                     <span className="text-xs">{t('dashboard.listTool')}</span>
                   </Button>
-                  <Button variant="outline" className="h-auto py-3 flex flex-col items-center gap-1">
+                  <Button 
+                    variant="outline" 
+                    className="h-auto py-3 flex flex-col items-center gap-1"
+                    onClick={() => onSectionChange?.('chat')}
+                  >
                     <MessageSquare className="w-5 h-5" />
                     <span className="text-xs">{t('dashboard.messages')}</span>
                   </Button>

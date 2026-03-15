@@ -21,9 +21,9 @@ interface FooterProps {
 
 const quickLinks = (t: any) => [
   { label: t('nav.farmHealth'), section: 'farm-health' as Section },
-  { label: t('nav.market'), section: 'market-intelligence' as Section },
+  { label: 'Recommendations', section: 'recommendations' as Section },
+  { label: t('nav.market'), section: 'market' as Section },
   { label: t('nav.tools'), section: 'tools-lending' as Section },
-  { label: t('nav.marketplace') || 'Marketplace', section: 'marketplace' as Section },
   { label: t('nav.schemes'), section: 'government-schemes' as Section },
 ];
 

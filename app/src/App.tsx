@@ -46,6 +46,11 @@ function App() {
     }
   }, [isAuthenticated, checkAuth, fetchNotifications]);
 
+  // Scroll to top when section changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentSection]);
+
   const handleAuthClick = (mode: 'login' | 'register') => {
     setAuthMode(mode);
     setIsAuthModalOpen(true);
@@ -88,7 +93,7 @@ function App() {
         return (
           <>
             <Hero onNavigate={setCurrentSection} />
-            <Dashboard preview />
+            <Dashboard preview onSectionChange={setCurrentSection} />
           </>
         );
       case 'farm-health':
@@ -104,7 +109,7 @@ function App() {
       case 'government-schemes':
         return <GovernmentSchemes />;
       case 'dashboard':
-        return <Dashboard />;
+        return <Dashboard onSectionChange={setCurrentSection} />;
       case 'profile':
         return <Profile />;
       default:
